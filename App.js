@@ -70,6 +70,20 @@ export default class App extends Component {
       this.refs.webview11.postMessage(JSON.stringify(data));
     }
 
+    // 抖动扩散
+    shakeSpread = () => {
+      let sc = `window.shakeSpread()`;
+      this.refs.webview11.injectJavaScript(sc);
+    }
+
+    // 抖动收缩
+    shakeRecover = () => {
+      let sc = `window.shakeRecover()`;
+      this.refs.webview11.injectJavaScript(sc);
+    }
+
+    
+    
     render() { 
         const autoHeight = true;
         let _that = this;
@@ -78,6 +92,20 @@ export default class App extends Component {
                 <TouchableOpacity onPress={() => this.injectJS()
                 }>
                     <Text>加载数据</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={{marginTop: 2}}> 
+                <TouchableOpacity onPress={() => this.shakeSpread()
+                }>
+                    <Text>抖动扩散</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={{marginTop: 2}}> 
+                <TouchableOpacity onPress={() => this.shakeRecover()
+                }>
+                    <Text>抖动收缩</Text>
                 </TouchableOpacity>
             </View>
             <WebView
